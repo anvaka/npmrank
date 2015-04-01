@@ -1,0 +1,22 @@
+{
+  "name": "npmrank",
+  "version": "1.0.0",
+  "description": "npm dependencies graph metrics",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "npm",
+    "dependencies",
+    "graph",
+    "metrics",
+    "ngraph"
+  ],
+  "author": "Andrei Kashcha",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anvaka/npmrank"
+  }
+}
