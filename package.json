@@ -18,5 +18,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/anvaka/npmrank"
+  },
+  "devDependencies": {
+    "ngraph.graph": "0.0.10",
+    "ngraph.tojson": "^0.1.2"
   }
 }

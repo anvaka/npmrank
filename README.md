@@ -1,6 +1,6 @@
 # npmrank
 
-npm dependencies graph metrics
+This repository computes various graph metrics for npm dependencies.
 
 # install
 
