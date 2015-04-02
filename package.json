@@ -25,6 +25,7 @@
     "ngraph.graph": "0.0.10",
     "ngraph.hits": "^0.1.0",
     "ngraph.pagerank": "^0.1.2",
-    "ngraph.tojson": "^0.1.2"
+    "ngraph.tojson": "^0.1.2",
+    "prompt": "^0.2.14"
   }
 }
