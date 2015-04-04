@@ -5,7 +5,8 @@ This repository computes various graph metrics for npm dependencies.
 # sample
 
 Please refer to the [sample](https://github.com/anvaka/npmrank/tree/master/sample)
-folder to see output of this application.
+folder to see output of this application. You can also visit online page to search
+packages by keyword and sort results by pagerank: http://anvaka.github.io/npmrank/online/
 
 # local development
 
