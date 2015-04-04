@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="vendor/vendor.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Search npm packages by keyword and see them sorted by PageRank" />
     <title>npm packages sorted by pagerank</title>
   </head>
   <body>
@@ -22,6 +23,9 @@
     }
     a {
       color: #288EDF;
+    }
+    p {
+      color: #F0F1F1;
     }
     .name {
       float: left;
@@ -62,13 +66,18 @@
       padding-top: 42px;
     }
   </style>
- 
+
 
     <div id="main">
       <h1>Sort npm packages by page rank</h1>
+      <p>
+        This website allows you to search npm packages by keyword and then sorts
+        the results according to their PageRank. To read more
+        about how this works, please visit <a href='https://github.com/anvaka/npmrank/tree/master/online'>the GitHub repository</a>.
+      </p>
       <div id="loading">
         <div class="loader-inner ball-pulse-rise"><div></div><div></div><div></div><div></div><div></div></div>
-        <h2>Downloading npm data (~12MB)...</h2>
+        <h2>Downloading npm data (~4MB)...</h2>
       </div>
       <div id="typeahead"></div>
       <div id="results"></div>
@@ -119,6 +128,7 @@
 
   function showRank(tag) {
     var tags = window.data.tags;
+    setHash(tag);
     var matches = tags[tag] || [];
     React.renderComponent(
       <Results packages={matches}
@@ -134,6 +144,17 @@
     var tags = data.tags;
     var loading = document.getElementById('loading');
     loading.parentElement.removeChild(loading);
+    var defaultTag = getDefaultTag();
+    if (defaultTag) {
+      showRank(defaultTag);
+      setTimeout(function() {
+        var input = document.querySelector('input');
+        if (input) {
+          // couldn't find how to do this in the typeahead control that I'm using:
+          input.value = defaultTag;
+        }
+      }, 30);
+    }
 
     React.renderComponent(
       <div>
@@ -154,11 +175,33 @@
     );
   };
 
+  function getDefaultTag() {
+    var hash = window.location.hash || '';
+    if (!hash) return '';
+    var match = hash = hash.match(/tag=([^&#]+)/);
+    if (!match) return '';
+    return match[1];
+  }
+
+  function setHash(tag) {
+    window.location.hash = '#tag=' + tag;
+  }
+
   req.send();
 })()
 
     </script>
 
   </body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-47259320-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </html>
 
