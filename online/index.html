@@ -2,50 +2,43 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-mobile-dark.css" />
+    <link rel="stylesheet" href="vendor/vendor.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>npm packages sorted by pagerank</title>
-    <script src="http://fb.me/react-with-addons-0.11.1.min.js"></script>
-    <script src="http://fb.me/JSXTransformer-0.11.1.js"></script>
-    <script src="http://wookiehangover.github.io/react-typeahead/dist/react-typeahead.js"></script>
   </head>
   <body>
-    <style>
-
+  <style>
     #main {
       width: 100%;
       max-width: 600px;
       margin: 0 auto;
     }
-
     h1 {
       color: #F0F1F1;
+      text-align: center;
     }
-
     h2 {
       color: #D0D1D1;
     }
-
     a {
       color: #288EDF;
     }
-
     .name {
       float: left;
+      margin-top: 10px;
     }
     .rank {
       float: right;
+      margin-top: 10px;
     }
-
     .topcoat-text-input {
       width: 100%;
     }
-
     ul {
       list-style-type: none;
+      padding: 0;
     }
-
-    li.hover {
+    a:hover {
       background: #585858;
     }
     .result {
@@ -53,17 +46,37 @@
       min-height: 42px;
       width: 100%;
     }
-
-
-    </style>
+    .header {
+      min-height: 42px;
+    }
+    .header span {
+      color: RGB(169, 169, 169)
+    }
+    #results .header span,
+    #results .name,
+    #results .rank {
+      padding: 0 10px;
+    }
+    #loading {
+      text-align: center;
+      padding-top: 42px;
+    }
+  </style>
+ 
 
     <div id="main">
       <h1>Sort npm packages by page rank</h1>
-      <h2>Select npm keyword:</h2>
+      <div id="loading">
+        <div class="loader-inner ball-pulse-rise"><div></div><div></div><div></div><div></div><div></div></div>
+        <h2>Downloading npm data (~12MB)...</h2>
+      </div>
       <div id="typeahead"></div>
       <div id="results"></div>
     </div>
 
+    <script src="http://fb.me/react-with-addons-0.11.1.min.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.11.1.js"></script>
+    <script src="vendor/react-typeahead.js"></script>
     <script type="text/jsx">
 /** @jsx React.DOM */
 (function(){
@@ -87,6 +100,9 @@
       return <div>
         <h2>Found {packages.length} packages matching `{this.props.query}`:</h2>
         <ul>
+          <li className='header'>
+            <span className='name'>Package name</span> <span className='rank'>PageRank value</span>
+          </li>
           {packageView}
         </ul>
       </div>;
@@ -116,19 +132,24 @@
     }
     window.data = JSON.parse(req.response);
     var tags = data.tags;
+    var loading = document.getElementById('loading');
+    loading.parentElement.removeChild(loading);
 
     React.renderComponent(
-      <ReactTypeahead.Typeahead
-        options={Object.keys(tags)}
-        className="topcoat-list"
-        onOptionSelected={showRank}
-        placeholder="E.g. mock"
-        maxVisible="8"
-        customClasses={{
-          input: "topcoat-text-input",
-          results: "topcoat-list__container",
-          listItem: "topcoat-list__item"
-        }} />,
+      <div>
+        <h2>Select npm keyword:</h2>
+        <ReactTypeahead.Typeahead
+          options={Object.keys(tags)}
+          className="topcoat-list"
+          onOptionSelected={showRank}
+          placeholder="E.g. mock"
+          maxVisible="8"
+          customClasses={{
+            input: "topcoat-text-input",
+            results: "topcoat-list__container",
+            listItem: "topcoat-list__item"
+          }} />
+      </div>,
       document.getElementById("typeahead")
     );
   };
