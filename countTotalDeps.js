@@ -21,7 +21,7 @@ names.forEach(computeDeps);
 var results = names.sort(byDeps).map(toPrettyString);
 console.log(results);
 
-var grandTotal = Object.keys(globallySeen).length;
+var grandTotal = Object.keys(globallySeen).length - names.length;
 console.log(grandTotal + ' unique packages depend on ' + searchQuery + ' out of total ' + allPackages + ' packages');
 console.log('That is ' + (100 * grandTotal / allPackages).toFixed(3) + '%');
 
@@ -46,10 +46,6 @@ function computeDeps(module) {
   dependents[module] = moduleDepepndents;
 
   function countInside(name) {
-    // we don't want to stuck in infinite cycle here, so
-    // opt out as soon as we already visited this package:
-    if (seen[name]) return;
-
     // glballySeen will give us unique package names at the end
     globallySeen[name] = true;
     // while seen will just prevent stack size exceeded error.
@@ -59,7 +55,8 @@ function computeDeps(module) {
 
     function countDependents(other, link) {
       var isDependent = link.toId === name;
-      if (isDependent) {
+
+      if (isDependent && !seen[link.fromId]) {
         moduleDepepndents += 1;
         // go up the dependents tree
         countInside(link.fromId);
