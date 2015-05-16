@@ -1,3 +1,16 @@
+/**
+ * Counts total dependents for a give search query.
+ *
+ * Usage:
+ *  node countTotalDeps.js "^lodash[.-]"
+ *
+ * This will find all modules matching `^lodash[.-]` regex, and for each of them
+ * will compute all transitive dependents (i.e. dependents of dependents and so on)
+ *
+ * Prerequisites:
+ *  1. Download npm graph with `01_get_graph.sh`
+ *  2. Convert it to graph with `node convertToGraph.js`
+ */
 var fromjson = require('ngraph.fromjson');
 var fs = require('fs');
 var searchQuery = process.argv[2] || '(^lodash[.-])|(^lodash$)';
