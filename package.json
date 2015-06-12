@@ -22,7 +22,7 @@
   "devDependencies": {
     "ngraph.centrality": "^0.1.2",
     "ngraph.fromjson": "^0.1.6",
-    "ngraph.graph": "0.0.10",
+    "ngraph.graph": "0.0.11",
     "ngraph.hits": "^0.1.0",
     "ngraph.pagerank": "^0.1.2",
     "ngraph.tojson": "^0.1.2",
