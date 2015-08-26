@@ -27,5 +27,9 @@
     "ngraph.pagerank": "^0.1.2",
     "ngraph.tojson": "^0.1.2",
     "prompt": "^0.2.14"
+  },
+  "dependencies": {
+    "JSONStream": "^1.0.4",
+    "event-stream": "^3.3.1"
   }
 }
