@@ -39,7 +39,9 @@ load(inputFileName, function(packages) {
     return;
 
     function addNode(pkg) {
-      graph.addNode(pkg.id);
+      graph.addNode(pkg.id, {
+        maintainers: pkg.value.maintainers
+      });
       var deps = getDpendencies(pkg.value, kind);
       if (deps) {
         Object.keys(deps).forEach(addLink);
