@@ -61,8 +61,21 @@ count number of packages that depend on either underscore or lodash:
 node countTotalDeps.js "^(lodash|underscore)$"
 ```
 
-NOTE: Total dependents means all transitive dependents as well (i.e. dependents
+*NOTE*: Total dependents means all transitive dependents as well (i.e. dependents
 of dependents, and so on).
+
+To count which versions depend on your package you can use `countVersions.js`
+utility:
+
+```
+node countVersions.js jquery
+```
+
+To get list of packages grouped by version pass `--print-names` argument:
+
+```
+node countVersions.js ngraph.graph --print-names
+```
 
 ## Online
 
