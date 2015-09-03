@@ -77,6 +77,13 @@ To get list of packages grouped by version pass `--print-names` argument:
 node countVersions.js ngraph.graph --print-names
 ```
 
+To further narrow down this list and print only those deps that could receive
+a certain semver range, pass --semver argument. E.g.:
+
+```
+node countVersions.js lodash --semver='3.9.x'
+```
+
 ## Online
 
 Discover relevant and popular packages quickly: http://anvaka.github.io/npmrank/online/

@@ -1,10 +1,21 @@
+var semver = require('semver');
+var intersect = require('semver-set').intersect;
+
 var argv = require('minimist')(process.argv.slice(2));
 var packageName = argv['_'][0];
 if (!packageName) {
   printUsage();
   process.exit(101);
 }
+
 var printNames = argv['print-names'];
+var semverFilter = argv['semver'];
+
+if (semverFilter && !semver.validRange(semverFilter)) {
+  printUsage();
+  console.log('Invalid semver range filter: ' + semverFilter);
+  process.exit(102);
+}
 
 console.log('Counting packages that depend on ' + packageName + '...');
 
@@ -53,9 +64,19 @@ function countDependencies(dependencies, currentPackage) {
   Object.keys(dependencies).forEach(function(dependencyName) {
     if (dependencyName === packageName) {
       var pkgVersion = dependencies[dependencyName];
-      increaseCounter(pkgVersion, currentPackage);
+      if (matchesSemverFilter(pkgVersion)) {
+        increaseCounter(pkgVersion, currentPackage);
+      }
     }
   });
+}
+
+function matchesSemverFilter(pkgVersion) {
+  if (!semverFilter) return true; // assume it's "*"
+
+  if (!semver.validRange(pkgVersion)) return false;
+
+  return intersect(pkgVersion, semverFilter);
 }
 
 function increaseCounter(version, currentPackage) {
@@ -78,8 +99,9 @@ function printUsage() {
   console.log('countVersions.js - counts all packages in npm registry that depend on `packageName`');
   console.log('');
   console.log('Usage:');
-  console.log('  node countVersions.js packageNamei [options]');
+  console.log('  node countVersions.js packageName [options]');
   console.log('');
   console.log('Options:');
   console.log(' --print-names [false] - print dependent package name');
+  console.log(' --semver [*] - filter results by deps that could receive this semver');
 }
