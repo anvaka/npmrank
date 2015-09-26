@@ -20,12 +20,12 @@
     "url": "https://github.com/anvaka/npmrank"
   },
   "devDependencies": {
-    "ngraph.centrality": "^0.1.2",
-    "ngraph.fromjson": "^0.1.6",
-    "ngraph.graph": "0.0.11",
+    "ngraph.centrality": "^0.1.5",
+    "ngraph.fromjson": "^0.1.8",
+    "ngraph.graph": "0.0.12",
     "ngraph.hits": "^0.1.0",
     "ngraph.pagerank": "^0.1.2",
-    "ngraph.tojson": "^0.1.2",
+    "ngraph.tojson": "^0.1.4",
     "prompt": "^0.2.14"
   },
   "dependencies": {
