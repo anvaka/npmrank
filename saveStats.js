@@ -1,6 +1,9 @@
 var inputFileName = process.argv[2] || './data/dependenciesGraph.out.graph';
 var path = require('path');
-var outputDir = 'export';
+
+// You'll need to run git clone git@gist.github.com:8e8fa57c7ee1350e3491.git
+// in the export folder to get this path:
+var outputDir = 'export/8e8fa57c7ee1350e3491';
 var count = process.argv[3] || 1000;
 var prefix = process.argv[4] || '';
 var centrality = require('ngraph.centrality');
@@ -12,24 +15,24 @@ var graph = fromjson(fs.readFileSync(inputFileName, 'utf8'));
 
 var dumpTime = (new Date().toUTCString());
 saveFile(
-  'most-dependent-upon.md',
+  '01.most-dependent-upon.md',
   centrality.degree(graph, 'in'),
   '# Top ' + count + ' most dependent upon packages'
 );
 saveFile(
-  'with-most-dependencies.md',
+  '02.with-most-dependencies.md',
   centrality.degree(graph, 'out'),
   '# Top ' + count + ' packages with most dependencies'
 );
 
 saveFile(
-  'pagerank.md',
+  '03.pagerank.md',
   pagerank(graph, 0.85, 1e-10),
   '# Top ' + count + ' packages with highest Pagerank'
 );
 
 saveFile(
-  'hits-rank.md',
+  '04.hits-rank.md',
   hitsrank(graph),
   '# Top ' + count + ' packages with highest authority in HITS rank',
   hitsSort, hitsPrint
