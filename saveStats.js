@@ -17,7 +17,7 @@ var dumpTime = (new Date().toUTCString());
 saveFile(
   '01.most-dependent-upon.md',
   centrality.degree(graph, 'in'),
-  '# Top ' + count + ' most dependent upon packages'
+  '# Top ' + count + ' most depended-upon packages'
 );
 saveFile(
   '02.with-most-dependencies.md',
