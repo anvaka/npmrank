@@ -14,7 +14,7 @@
 var fromjson = require('ngraph.fromjson');
 var fs = require('fs');
 var argv = require('minimist')(process.argv.slice(2));
-var searchQuery = argv['_'][0]; // process.argv[2] || '(^lodash[.-])|(^lodash$)';
+var searchQuery = argv['_'][0];
 var graphName = argv['_'][1] || './data/dependenciesGraph.out.graph';
 var printNames = argv['print-names'];
 
