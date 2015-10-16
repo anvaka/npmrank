@@ -82,7 +82,7 @@ function assertUtilExist(utilName) {
   }
 
   var fileName = getUtilFile(utilName);
-  if (!fs.existsSync(utilName)) {
+  if (!fs.existsSync(fileName)) {
     console.log('Could not find utility `' + utilName + '` inside `' + fileName + '`.');
     process.exit(-2);
   }
