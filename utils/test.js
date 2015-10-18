@@ -1,7 +1,7 @@
 module.exports = map;
 
 function map(pkg) {
-  var scripts = pkg.scripts;
-  if (!scripts) return 'undefined';
-  return scripts.test;
+  var test = pkg.scripts && pkg.scripts.test;
+  if (typeof test !== 'string') return 'undefined';
+  return test;
 }

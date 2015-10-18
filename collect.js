@@ -21,11 +21,14 @@ forEachPackage(npmFileName, visit, save);
 
 function visit(record) {
   var key = utilMap(record.value);
+  if (typeof key !== 'string') {
+    throw new Error('Not a string: ' + JSON.stringify(key, null, 2) + '; ' + JSON.stringify(record, null, 2));
+  }
   labels.push(record.id);
-  var index = labels.length - 1;
-  addResult(index, key);
-  if (index % 5000 === 0) {
-    console.log('processed ' + index + ' records');
+  var packageIndex = labels.length - 1;
+  addResult(packageIndex, key);
+  if (packageIndex % 5000 === 0) {
+    console.log('processed ' + packageIndex + ' records');
   }
 }
 
