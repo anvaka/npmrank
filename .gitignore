@@ -7,7 +7,6 @@ lib-cov
 *.pid
 *.gz
 
-online/npmrank.json
 pids
 logs
 results
