@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+# This package generates data for https://gist.github.com/anvaka/8e8fa57c7ee1350e3491
 cd "$(dirname "$0")"
 curl https://skimdb.npmjs.com/registry/_design/scratch/_view/byField > ./data/byField.in.graph
 /usr/local/bin/node ./convertToGraph.js

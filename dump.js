@@ -1,5 +1,6 @@
 /**
- * Dump keywords and page rank into separate files
+ * A data dumper for https://anvaka.github.io/npmrank/online/
+ * Dumps keywords and page rank into separate files.
  */
 var fs = require('fs');
 var outFileName = 'online/npmrank.json';
