@@ -35,8 +35,10 @@ function countDependencies(dependencies, currentPackage) {
   Object.keys(dependencies).forEach(function(dependencyName) {
     if (dependencyName === packageName) {
       hasCurrentPackage = true;
+    } else {
+      // add only those that do not equal to the current package
+      deps.add(dependencyName);
     }
-    deps.add(dependencyName);
   });
 
   // Merge to global counter
