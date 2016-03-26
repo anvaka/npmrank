@@ -84,6 +84,14 @@ a certain semver range, pass --semver argument. E.g.:
 node countVersions.js lodash --semver='3.9.x'
 ```
 
+### Searching for packages that sounds like a given name
+
+```
+node soundsLike.js [packageName]
+```
+
+For example `node soundsLike.js ngraph` will find `dgraph, egraph, graph, ...`
+
 ## Online
 
 Discover relevant and popular packages quickly: http://anvaka.github.io/npmrank/online/
