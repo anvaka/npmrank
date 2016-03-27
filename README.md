@@ -87,10 +87,27 @@ node countVersions.js lodash --semver='3.9.x'
 ### Searching for packages that sounds like a given name
 
 ```
-node soundsLike.js [packageName]
+node soundsLike.js packageName [maxDistance=3]
 ```
 
-For example `node soundsLike.js ngraph` will find `dgraph, egraph, graph, ...`
+Where
+
+```
+packageName [required] - name that you are investigating
+maxDistance [optional, defaults to 2] - Levenshtein distance threshold. Smaller
+ values yield better matches.
+```
+
+Examples:
+
+``` shell
+# will find `digraph, mongraph, graph, egraph, ...`
+node soundsLike.js ngraph
+
+# this will narrow down results to edit distance 1
+# `graph, egraph, ...`:
+node soundsLike.js ngraph 1
+```
 
 ## Online
 
