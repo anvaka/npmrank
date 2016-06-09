@@ -32,7 +32,7 @@ easily.
 
 The npm keywords database and graph's PageRank is computed offline. First, I
 [download](../01_get_graph.sh) the entire catalogue of npm packages, using
-`skimdb.npmjs.com`. This is ~230MB of data. Then I [convert](../convertToGraph.js)
+`skimdb.npmjs.com`. This is ~410MB of data. Then I [convert](../convertToGraph.js)
 the raw response into [`ngraph.graph`](https://github.com/anvaka/ngraph.graph) instance.
 Finally, [these 26 lines of code](../dump.js) collect all tags, compute pagerank,
 and dump results into json file.
