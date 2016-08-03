@@ -17,7 +17,7 @@ Download the npm graph from npm:
 ```
 
 This will download graph from skimdb and save it to `data` folder. As of 
-October 2015 this data is about 258MB. Convert it to `ngraph.graph` format
+January 2016 this data is about 324MB. Convert it to `ngraph.graph` format
 for further analysis:
 
 ```
@@ -82,6 +82,31 @@ a certain semver range, pass --semver argument. E.g.:
 
 ```
 node countVersions.js lodash --semver='3.9.x'
+```
+
+### Searching for packages that sounds like a given name
+
+```
+node soundsLike.js packageName [maxDistance=3]
+```
+
+Where
+
+```
+packageName [required] - name that you are investigating
+maxDistance [optional, defaults to 2] - Levenshtein distance threshold. Smaller
+ values yield better matches.
+```
+
+Examples:
+
+``` shell
+# will find `digraph, mongraph, graph, egraph, ...`
+node soundsLike.js ngraph
+
+# this will narrow down results to edit distance 1
+# `graph, egraph, ...`:
+node soundsLike.js ngraph 1
 ```
 
 ## Online
