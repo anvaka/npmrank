@@ -17,7 +17,7 @@ Download the npm graph from npm:
 ```
 
 This will download graph from skimdb and save it to `data` folder. As of 
-January 2016 this data is about 324MB. Convert it to `ngraph.graph` format
+September 2016 this data is about 500MB. Convert it to `ngraph.graph` format
 for further analysis:
 
 ```
