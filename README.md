@@ -54,7 +54,7 @@ created and maintained by a given user (in this case it's @thlorenz):
 node ./countAuthorDeps.js thlorenz
 ```
 
-You can also counts total dependents for a given search query. E.g. this will
+You can also count total dependents for a given search query. E.g. this will
 count number of packages that depend on either underscore or lodash:
 
 ```
