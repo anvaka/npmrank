@@ -1,9 +1,18 @@
 var inputFileName = process.argv[2] || './data/dependenciesGraph.out.graph';
 var path = require('path');
+var fs = require('fs');
 
 // You'll need to run git clone git@gist.github.com:8e8fa57c7ee1350e3491.git
 // in the export folder to get this path:
 var outputDir = 'export/8e8fa57c7ee1350e3491';
+if (!fs.existsSync(outputDir)) {
+  console.log('Gist data not found. Run: ');
+  console.log(' git clone git@gist.github.com:8e8fa57c7ee1350e3491.git');
+  console.log('and try again');
+  process.exit(1);
+  return;
+}
+
 var count = process.argv[3] || 1000;
 var prefix = process.argv[4] || '';
 var centrality = require('ngraph.centrality');
