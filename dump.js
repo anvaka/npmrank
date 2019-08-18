@@ -7,7 +7,7 @@ var outFileName = 'online/npmrank.json';
 
 console.log('Collecting tags...');
 var collectTags = require('./lib/collectTags.js');
-collectTags('./data/byField.in.graph', function(result) {
+collectTags('./data/graph.in', function(result) {
   var tags = result.tags;
   console.log('Collected ' + result.totalTags + '; Unique tags: ' + result.uniqueTags);
 
