@@ -6,7 +6,6 @@ const outFileName = './data/graph.in';
 const outgoing = JSONStream.stringify(false);
   var fileStream = fs.createWriteStream(outFileName, {
     encoding: 'utf8',
-    flags: 'a'
   });
   outgoing.pipe(fileStream);
 let found = 0;
@@ -21,6 +20,12 @@ registry
     }
     if (pkg.devDependencies) {
       packageNode.devDependencies = pkg.devDependencies;
+    }
+    if (pkg.keywords) {
+      packageNode.keywords = pkg.keywords;
+    }
+    if (pkg.tags) {
+      packageNode.tags = pkg.tags;
     }
     const maintainers = pkg.other && pkg.other.maintainers;
     if (maintainers) {
