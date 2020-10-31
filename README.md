@@ -13,6 +13,8 @@ npm install
 Download the npm graph from npm:
 
 ```
+# Warning: this seem to be not working anymore. npm removed the endpoint
+# to download the graph. If you know alternative - please share
 ./01_get_graph.sh
 ```
 
