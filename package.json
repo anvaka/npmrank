@@ -29,11 +29,13 @@
     "prompt": "^0.2.14"
   },
   "dependencies": {
-    "JSONStream": "^1.0.4",
-    "event-stream": "^3.3.1",
+    "JSONStream": "^1.3.5",
+    "event-stream": "^3.3.5",
+    "fast-levenshtein": "^1.1.3",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
+    "package-stream": "^3.1.0",
     "semver": "^5.0.1",
-    "semver-set": "^0.1.1"
+    "semver-set": "git://github.com/voxpelli/semver-set.git#7fc070b53130604a9749a642e496ded9aecad98a"
   }
 }

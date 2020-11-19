@@ -6,7 +6,7 @@ var createGraph = require('ngraph.graph');
 var tojson = require('ngraph.tojson');
 var load = require('./lib/load.js');
 
-var inputFileName = process.argv[2] || './data/byField.in.graph';
+var inputFileName = process.argv[2] || './data/graph.in';
 console.log('Parsing npm packages file...');
 load(inputFileName, function(packages) {
   saveGraph('dependencies', './data/dependenciesGraph.out.graph');
@@ -40,9 +40,9 @@ load(inputFileName, function(packages) {
 
     function addNode(pkg) {
       graph.addNode(pkg.id, {
-        maintainers: pkg.value.maintainers
+        maintainers: pkg.maintainers
       });
-      var deps = getDpendencies(pkg.value, kind);
+      var deps = getDpendencies(pkg, kind);
       if (deps) {
         Object.keys(deps).forEach(addLink);
       }
