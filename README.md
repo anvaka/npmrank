@@ -111,10 +111,10 @@ node soundsLike.js ngraph 1
 
 ## Online
 
-Discover relevant and popular packages quickly: http://anvaka.github.io/npmrank/online/
+Discover relevant and popular packages quickly: https://anvaka.github.io/npmrank/online/
 Select a keyword and get packages sorted by their pagerank value.
 
-Daily metrics dump with all graphs is available [here](https://gist.github.com/anvaka/8e8fa57c7ee1350e3491).
+Metrics dump with all graphs is available [here](https://gist.github.com/anvaka/8e8fa57c7ee1350e3491).
 
 # license
 
