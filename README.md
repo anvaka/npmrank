@@ -10,17 +10,10 @@ cd npmrank
 npm install
 ```
 
-Download the npm graph from npm:
+Download the npm graph from npm. To do this, follow the instructions from
+https://github.com/anvaka/allnpm#downloading-npm-data
 
-```
-# Warning: this seem to be not working anymore. npm removed the endpoint
-# to download the graph. If you know alternative - please share
-./01_get_graph.sh
-```
-
-This will download graph from skimdb and save it to `data` folder. As of 
-September 2016 this data is about 500MB. Convert it to `ngraph.graph` format
-for further analysis:
+Once you get the `byField` file convert it to graph:
 
 ```
 node --max-old-space-size=4096 convertToGraph.js
