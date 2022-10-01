@@ -42,7 +42,7 @@ load(inputFileName, function(packages) {
       graph.addNode(pkg.id, {
         maintainers: pkg.maintainers
       });
-      var deps = getDpendencies(pkg, kind);
+      var deps = getDependencies(pkg, kind);
       if (deps) {
         Object.keys(deps).forEach(addLink);
       }
@@ -53,7 +53,7 @@ load(inputFileName, function(packages) {
     }
   }
 
-  function getDpendencies(pkg, kind) {
+  function getDependencies(pkg, kind) {
     if (kind === 'dependencies') {
       return pkg.dependencies;
     }
