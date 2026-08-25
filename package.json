@@ -35,7 +35,7 @@
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "package-stream": "^3.1.0",
-    "semver": "^5.0.1",
+    "semver": "^5.7.2",
     "semver-set": "git://github.com/voxpelli/semver-set.git#7fc070b53130604a9749a642e496ded9aecad98a"
   }
 }
